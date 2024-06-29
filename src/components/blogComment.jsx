@@ -1,7 +1,6 @@
 import dateFormatter from "./dateFormatter";
 
 function BlogComment({ data, paramId }) {
-    console.log(data)
     const formattedDate = dateFormatter({ inputDate: data.time_stamp, options: "time" });
 
     return (
@@ -18,7 +17,7 @@ function BlogComment({ data, paramId }) {
                     <span className={data.blog_id === paramId ? "text-blue-600" : "text-gray-900"}>
                         {data.user_id?.first_name} {data.user_id?.last_name}
                     </span>
-                    {data.user_id?._id === data.blog_id?.user_id  &&  <span className="text-xs text-red-500 ml-1">- Author</span>}
+                    {data.user_id?._id === data.blog_id?.user_id && <span className="text-xs text-red-500 ml-1">- Author</span>}
                 </h3>
                 <p className="mt-1 text-gray-700">{data.commentText}</p>
                 <p className="mt-2 text-sm text-gray-500">Posted on {formattedDate}</p>

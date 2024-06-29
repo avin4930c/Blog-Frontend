@@ -12,7 +12,7 @@ function DetailPage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch(`http://localhost:3000/blog/${id}`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/blog/${id}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

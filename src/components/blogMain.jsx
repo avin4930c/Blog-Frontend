@@ -10,7 +10,7 @@ function BlogMain() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch(`http://localhost:3000/blog/published`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/blog/published`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

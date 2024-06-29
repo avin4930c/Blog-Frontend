@@ -29,10 +29,10 @@ function EditProfileMain() {
     const uploadFileToCloudinary = async (file) => {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('upload_preset', process.env.VITE_CLOUDINARY_UPLOAD_PRESET);
+        formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
 
         try {
-            const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, {
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, {
                 method: 'POST',
                 body: formData
             });
@@ -80,7 +80,7 @@ function EditProfileMain() {
             }
 
             try {
-                const response = await fetch('http://localhost:3000/user/updateUser', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/user/updateUser`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -100,7 +100,6 @@ function EditProfileMain() {
                 }
 
                 navigate('/');
-                console.log('Profile updated successfully');
             } catch (error) {
                 console.error('Error updating profile:', error);
                 setErrors({ msg: 'Error updating profile' });

@@ -11,7 +11,7 @@ function BlogCommentMain({ paramId }) {
     useEffect(() => {
         async function fetchComments() {
             try {
-                const response = await fetch(`http://localhost:3000/blog/${paramId}/comments`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/blog/${paramId}/comments`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -34,8 +34,8 @@ function BlogCommentMain({ paramId }) {
 
     async function handleCommentSubmit(e) {
         e.preventDefault();
-        try {
-            const response = await fetch(`http://localhost:3000/blog/${paramId}/comment`, {
+        try {_
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/blog/${paramId}/comment`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

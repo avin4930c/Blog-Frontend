@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
 
     const fetchUserData = async (token) => {
         try {
-            const response = await fetch('http://localhost:3000/user/fetchUser', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/user/fetchUser`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -52,7 +52,6 @@ const AuthProvider = ({ children }) => {
     }
 
     const logout = () => {
-        console.log("logged out");
         sessionStorage.removeItem('token');
         setAuthToken(null);
         setUser(null);

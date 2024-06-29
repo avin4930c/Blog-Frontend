@@ -8,7 +8,7 @@ function TopicPageMain() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch(`http://localhost:3000/blog/topic`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/blog/topic`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
