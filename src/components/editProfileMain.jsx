@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import LoadingComponent from './loadingComponent'; // Make sure to import your LoadingComponent
 
@@ -29,10 +29,10 @@ function EditProfileMain() {
     const uploadFileToCloudinary = async (file) => {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('upload_preset', 'blog_api_preset'); // Use environment variable
+        formData.append('upload_preset', process.env.VITE_CLOUDINARY_UPLOAD_PRESET);
 
         try {
-            const response = await fetch(`https://api.cloudinary.com/v1_1/dyi5bnusc/image/upload`, {
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, {
                 method: 'POST',
                 body: formData
             });
@@ -52,7 +52,7 @@ function EditProfileMain() {
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
         setFile(selectedFile);
-        setAvatarUrl(''); // Reset avatar URL when a new file is selected
+        setAvatarUrl('');
     };
 
     async function handleSubmit(e) {
@@ -99,7 +99,7 @@ function EditProfileMain() {
                     return;
                 }
 
-                navigate('/'); // Redirect upon successful update
+                navigate('/');
                 console.log('Profile updated successfully');
             } catch (error) {
                 console.error('Error updating profile:', error);
@@ -124,12 +124,10 @@ function EditProfileMain() {
         } else if (!/\S+@\S+\.\S+/.test(email)) {
             formErrors.email = 'Email address is invalid';
         }
-        
+
         if (avatarUrl && !isValidUrl(avatarUrl)) {
             formErrors.avatarUrl = 'Avatar URL is invalid';
         }
-
-        // Additional validations can be added for bio if needed
 
         return formErrors;
     };
@@ -162,9 +160,8 @@ function EditProfileMain() {
                             id="firstName"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
-                            className={`mt-1 py-2 px-3 w-full rounded-md border ${
-                                errors.firstName ? 'border-red-500' : 'border-gray-300'
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                            className={`mt-1 py-2 px-3 w-full rounded-md border ${errors.firstName ? 'border-red-500' : 'border-gray-300'
+                                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                             placeholder="Enter your first name"
                         />
                         {errors.firstName && (
@@ -181,9 +178,8 @@ function EditProfileMain() {
                             id="lastName"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
-                            className={`mt-1 py-2 px-3 w-full rounded-md border ${
-                                errors.lastName ? 'border-red-500' : 'border-gray-300'
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                            className={`mt-1 py-2 px-3 w-full rounded-md border ${errors.lastName ? 'border-red-500' : 'border-gray-300'
+                                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                             placeholder="Enter your last name"
                         />
                         {errors.lastName && (
@@ -201,9 +197,8 @@ function EditProfileMain() {
                             value={email}
                             disabled
                             onChange={(e) => setEmail(e.target.value)}
-                            className={`mt-1 py-2 px-3 w-full rounded-md border ${
-                                errors.email ? 'border-red-500' : 'border-gray-300'
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                            className={`mt-1 py-2 px-3 w-full rounded-md border ${errors.email ? 'border-red-500' : 'border-gray-300'
+                                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                             placeholder="Enter your email address"
                         />
                         {errors.email && (
@@ -236,9 +231,8 @@ function EditProfileMain() {
                             id="avatarUrl"
                             value={avatarUrl}
                             onChange={(e) => setAvatarUrl(e.target.value)}
-                            className={`mt-1 py-2 px-3 w-full rounded-md border ${
-                                errors.avatarUrl ? 'border-red-500' : 'border-gray-300'
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                            className={`mt-1 py-2 px-3 w-full rounded-md border ${errors.avatarUrl ? 'border-red-500' : 'border-gray-300'
+                                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                             placeholder="Enter URL for your avatar"
                         />
                         {errors.avatarUrl && (
@@ -255,9 +249,8 @@ function EditProfileMain() {
                             rows="4"
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
-                            className={`mt-1 py-2 px-3 w-full rounded-md border ${
-                                errors.bio ? 'border-red-500' : 'border-gray-300'
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                            className={`mt-1 py-2 px-3 w-full rounded-md border ${errors.bio ? 'border-red-500' : 'border-gray-300'
+                                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                             placeholder="Write a short bio about yourself"
                         ></textarea>
                         {errors.bio && (

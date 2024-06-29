@@ -4,8 +4,8 @@ import NavBar from "../components/navbar";
 function EditProfile() {
     return (
         <>
-        <NavBar />
-        <EditProfileMain />
+            <NavBar />
+            <EditProfileMain />
         </>
     )
 }

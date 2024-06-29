@@ -11,7 +11,7 @@ import {
     Transition,
 } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link, useLocation } from 'react-router-dom'; // Added useLocation
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +31,6 @@ export default function NavBar() {
     const { user, authToken, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    // Update current navigation based on current location
     useEffect(() => {
         const currentNav = initialNavigation.map((item) => ({
             ...item,

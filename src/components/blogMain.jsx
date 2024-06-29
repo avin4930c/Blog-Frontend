@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import BlogCard from "./blogCard";
 import LoadingComponent from "./loadingComponent";
+import React from "react";
 
 function BlogMain() {
     const [blogData, setBlogData] = useState([]);
@@ -9,7 +10,7 @@ function BlogMain() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch("http://localhost:3000/blog/published", {
+                const response = await fetch(`http://localhost:3000/blog/published`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -38,11 +39,10 @@ function BlogMain() {
         <div className="container mx-auto px-4">
             <h1 className="text-4xl text-center py-6 font-bold text-gray-800 tracking-wide">Published Blogs</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {blogData.map((blog) => (
-        <BlogCard key={blog._id} data={blog} />
-    ))}
-</div>
-
+                {blogData.map((blog) => (
+                    <BlogCard key={blog._id} data={blog} />
+                ))}
+            </div>
         </div>
     );
 }

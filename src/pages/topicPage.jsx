@@ -4,8 +4,8 @@ import TopicPageMain from "../components/topicPageMain";
 function TopicPage() {
     return (
         <>
-        <NavBar />
-        <TopicPageMain />
+            <NavBar />
+            <TopicPageMain />
         </>
     )
 }

@@ -1,11 +1,10 @@
-import { createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ErrorPage } from '../errorPage';
 import SignupForm from '../components/signupForm';
 import LoginForm from '../components/loginForm';
 import MainPage from '../pages/mainPage';
 import DetailPage from '../pages/detailPage';
 import EditProfile from '../pages/editProfile';
-import UnderDevelopmentPage from '../components/soonPage';
 import TopicPage from '../pages/topicPage';
 
 function Route() {

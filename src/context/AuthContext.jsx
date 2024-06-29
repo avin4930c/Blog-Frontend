@@ -4,11 +4,11 @@ import { jwtDecode } from 'jwt-decode';
 export const AuthContext = createContext({
     authToken: null,
     user: null,
-    login: () => {},
-    logout: () => {},
+    login: () => { },
+    logout: () => { },
 });
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [authToken, setAuthToken] = useState(null);
     const [user, setUser] = useState(null);
 
@@ -59,7 +59,7 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthContext.Provider value={{authToken, user, login, logout}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ authToken, user, login, logout }}>{children}</AuthContext.Provider>
     )
 }
 

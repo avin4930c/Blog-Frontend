@@ -28,7 +28,6 @@ const BlogDetailPage = ({ data, paramId }) => {
           />
         </div>
         <div id="blog-content" className="mx-auto">
-          {/* Render sanitized HTML content */}
           <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
         </div>
         <BlogCommentMain paramId={paramId} />
