@@ -2,7 +2,7 @@
 
 Welcome to the Blog Frontend repository! This project is the frontend part of a blog application, built with modern web technologies to ensure a responsive and user-friendly experience. The frontend communicates with a separate CMS to manage content efficiently.
 
-The site is hosted on Vercel and can be accessed [here](https://blog-frontend-five-omega.vercel.app/).
+The site is hosted on Vercel and can be accessed [https://blog-frontend-five-omega.vercel.app/](https://blog-frontend-five-omega.vercel.app/).
 
 
 ## Features
@@ -18,7 +18,13 @@ The site is hosted on Vercel and can be accessed [here](https://blog-frontend-fi
 
 ## Technologies Used
 
-- **React**: JavaScript library for building user interfaces.
-- **Tailwind CSS**: Utility-first CSS framework for styling.
-- **React Router**: Library for routing in React applications.
-- **Context API**: For managing global state, particularly for authentication.
+- **React**
+- **Tailwind CSS**
+- **Vite**
+- **Vercel**
+
+For the complete functionality of this project, please have a look at the following repositories:
+- [Blog Backend repository](https://github.com/avin4930c/Blog-Backend): Contains the API used for user authentication and data management.
+- [Blog CMS repository](https://github.com/avin4930c/Blog-CMS): Contains the CMS used for content management.
+
+
