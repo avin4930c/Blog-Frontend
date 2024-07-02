@@ -3,6 +3,7 @@ import BlogDetailPage from "../components/blogDetailPage";
 import LoadingComponent from "../components/loadingComponent";
 import NavBar from "../components/navbar";
 import { useParams } from "react-router-dom";
+import Footer from "../components/footer";
 
 function DetailPage() {
     const { id } = useParams();
@@ -41,6 +42,7 @@ function DetailPage() {
         <>
             <NavBar />
             <BlogDetailPage data={blogData} paramId={id} />
+            <Footer backgroundColor="bg-white" />
         </>
     )
 }

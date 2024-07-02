@@ -19,6 +19,7 @@ import { useNavigate } from 'react-router-dom';
 const initialNavigation = [
     { name: 'Blogs', href: '/', current: true },
     { name: 'Topics', href: '/topics', current: false },
+    {name: 'CMS Website', href: 'https://blog-cms-six-omega.vercel.app/', current: false}
 ];
 
 function classNames(...classes) {
