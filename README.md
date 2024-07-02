@@ -4,7 +4,6 @@ Welcome to the Blog Frontend repository! This project is the frontend part of a 
 
 The site is hosted on Vercel and can be accessed [here](https://blog-frontend-five-omega.vercel.app/).
 
-## Table of Contents
 
 ## Features
 
