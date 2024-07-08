@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { GiSpikedDragonHead } from "react-icons/gi";
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { AuthContext } from '../context/AuthContext';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const schema = yup.object().shape({
   first_name: yup.string().required('First Name is required'),
