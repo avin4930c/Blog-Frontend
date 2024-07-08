@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const token = sessionStorage.getItem('token');
+        const token = localStorage.getItem('token');
         if (token) {
             const decodedToken = jwtDecode(token);
             const isTokenExpired = decodedToken.exp * 1000 < Date.now();
@@ -46,13 +46,13 @@ const AuthProvider = ({ children }) => {
     }
 
     const login = (token) => {
-        sessionStorage.setItem('token', token);
+        localStorage.setItem('token', token);
         setAuthToken(token);
         fetchUserData(token);
     }
 
     const logout = () => {
-        sessionStorage.removeItem('token');
+        localStorage.removeItem('token');
         setAuthToken(null);
         setUser(null);
     }
