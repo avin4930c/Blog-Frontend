@@ -164,7 +164,7 @@ function LoginForm() {
                             </div>
                         </form>
                         <div className="google-login mt-10">
-                            <GoogleOAuthProvider clientId={`${import.meta.env.VITE_GOOGLE_CLIENT_ID}`}>
+                            <GoogleOAuthProvider clientId={`${import.meta.env.GOOGLE_CLIENT_ID}`}>
                                 <div className='flex justify-center'>
                                     <GoogleLogin
                                         onSuccess={handleGoogleSuccess}
