@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { GiSpikedDragonHead } from "react-icons/gi";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const schema = yup.object().shape({
     email: yup.string().email('Invalid email').required('Email is required'),
@@ -19,6 +20,32 @@ function LoginForm() {
     });
     const [serverErrors, setServerErrors] = useState([]);
 
+    const handleGoogleSuccess = async (response) => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/user/googleLogin`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token: response.credential }),
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                console.log(data);
+                login(data.token);
+                setServerErrors([]);
+                navigate('/');
+            }
+            else {
+                const errorData = await res.json();
+                setServerErrors([{ msg: errorData.message || 'Login failed' }]);
+            }
+        } catch (error) {
+            console.error('Error during Google login/signup:', error);
+        }
+    };
+
     const onSubmit = async (data) => {
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/user/login`, {
@@ -31,7 +58,7 @@ function LoginForm() {
 
             if (response.ok) {
                 const responseData = await response.json();
-                const token = responseData.token;   
+                const token = responseData.token;
                 if (!token) {
                     return;
                 }
@@ -136,7 +163,6 @@ function LoginForm() {
                                 </p>
                             </div>
                         </form>
-<<<<<<< HEAD
                         <div className="google-login mt-10">
                             <GoogleOAuthProvider clientId={`${import.meta.env.VITE_GOOGLE_CLIENT_ID}`}>
                                 <div className='flex justify-center'>
@@ -149,8 +175,6 @@ function LoginForm() {
                                 </div>
                             </GoogleOAuthProvider>
                         </div>
-=======
->>>>>>> parent of a3a976d (added auth with googe login)
                     </div>
                 </main>
             </div>
