@@ -34,7 +34,7 @@ function BlogCommentMain({ paramId }) {
 
     async function handleCommentSubmit(e) {
         e.preventDefault();
-        try {_
+        try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/blog/${paramId}/comment`, {
                 method: "POST",
                 headers: {
