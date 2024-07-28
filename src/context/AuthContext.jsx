@@ -4,6 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 export const AuthContext = createContext({
     authToken: null,
     user: null,
+    userPic: null,
     login: () => { },
     logout: () => { },
 });
@@ -11,6 +12,7 @@ export const AuthContext = createContext({
 const AuthProvider = ({ children }) => {
     const [authToken, setAuthToken] = useState(null);
     const [user, setUser] = useState(null);
+    const [userPic, setUserPic] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -39,6 +41,7 @@ const AuthProvider = ({ children }) => {
                 return;
             }
             const userData = await response.json();
+            setUserPic(userData?.imgUrl);
             setUser(userData);
         } catch (error) {
             console.log('Failed to fetch user Data', error);
@@ -58,7 +61,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ authToken, user, login, logout }}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ authToken, user, userPic, setUserPic, login, logout }}>{children}</AuthContext.Provider>
     )
 }
 

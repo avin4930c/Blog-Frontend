@@ -14,7 +14,6 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { FaArrowRightLong } from "react-icons/fa6";
-import { useNavigate } from 'react-router-dom';
 
 const initialNavigation = [
     { name: 'Blogs', href: '/', current: true },
@@ -29,8 +28,7 @@ function classNames(...classes) {
 export default function NavBar() {
     const location = useLocation();
     const [navigation, setNavigation] = useState(initialNavigation);
-    const { user, authToken, logout } = useContext(AuthContext);
-    const navigate = useNavigate();
+    const { user, userPic, authToken, logout } = useContext(AuthContext);
 
     useEffect(() => {
         const currentNav = initialNavigation.map((item) => ({
@@ -110,7 +108,7 @@ export default function NavBar() {
                                                 <span className="sr-only">Open user menu</span>
                                                 <img
                                                     className="h-9 w-9 rounded-full"
-                                                    src={user?.imgUrl ? user.imgUrl : 'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg'}
+                                                    src={userPic ? userPic : 'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg'}
                                                     alt=""
                                                 />
                                             </MenuButton>
@@ -142,13 +140,12 @@ export default function NavBar() {
                                                     <>
                                                         <MenuItem>
                                                             {({ active }) => (
-                                                                <a
-                                                                    href=""
-                                                                    onClick={() => navigate('/editProfile')}
+                                                                <Link
+                                                                    to='/editProfile'
                                                                     className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                                 >
                                                                     Edit Profile
-                                                                </a>
+                                                                </Link>
                                                             )}
                                                         </MenuItem>
                                                         <MenuItem>

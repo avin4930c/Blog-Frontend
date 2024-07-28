@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import LoadingComponent from './loadingComponent'; // Make sure to import your LoadingComponent
 
 function EditProfileMain() {
-    const { user, authToken } = useContext(AuthContext);
+    const { user, setUserPic, authToken } = useContext(AuthContext);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -98,6 +98,8 @@ function EditProfileMain() {
                     }
                     return;
                 }
+
+                setUserPic(data.imgUrl);
 
                 navigate('/');
             } catch (error) {
